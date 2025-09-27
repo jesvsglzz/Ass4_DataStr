@@ -14,7 +14,17 @@ Output: False
 
 def has_duplicates(product_ids):
     # Your implementation here
-    pass
+    seen = set()
+    for pid in product_ids:
+        if pid in seen:
+            return True
+        seen.add(pid)
+    return False
+
+# Justification:
+# I used a set because it is good for checking if a value is already present and for keeping only unique
+# values. We go through each product ID, check if we have seen it before, and add it if we have not. A list
+# would have been slower because we would need to look through all items each time we check for duplicates.
 
 
 """
@@ -42,7 +52,11 @@ class TaskQueue:
         if self.queue:
             return self.queue.pop(0)  # Dequeue
         return None
-
+        
+# Justification:
+# I used a list to act like a queue because it keeps the order of tasks, which matches first-in-first-out 
+# behavior. We add tasks to the end and remove them from the front so the oldest task is removed first.
+# A stack would have removed the newest task first, which would not match what the problem asks for.
 
 """
 Problem 3: Unique Value Counter
@@ -66,3 +80,8 @@ class UniqueTracker:
 
     def get_unique_count(self):
         return len(self.values)
+
+# Justification:
+# I used a set because it only keeps unique values and ignores duplicates automatically. We add each 
+# value to the set and use len() to get how many unique values have been seen. A list would have required
+# checking each item before adding, which would take longer.
