@@ -33,13 +33,15 @@ task_queue.remove_oldest_task() → "Email follow-up"
 class TaskQueue:
     def __init__(self):
         # Your initialization here
-        pass
+        self.queue = []
 
     def add_task(self, task):
-        pass
+        self.queue.append(task)  # Enqueue
 
     def remove_oldest_task(self):
-        pass
+        if self.queue:
+            return self.queue.pop(0)  # Dequeue
+        return None
 
 
 """
@@ -57,10 +59,10 @@ tracker.get_unique_count() → 2
 
 class UniqueTracker:
     def __init__(self):
-        pass
+        self.values = set()
 
     def add(self, value):
-        pass
+        self.values.add(value)
 
     def get_unique_count(self):
-        pass
+        return len(self.values)
